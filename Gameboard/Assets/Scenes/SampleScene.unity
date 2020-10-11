@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a352ff234e2674a8fc8bef2755ac25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 5
-  heigth: 5
+  width: 10
+  heigth: 10
   elementPrefab: {fileID: 1054678328429092582, guid: 8a25f246244efde449f41fdeebc401d9, type: 3}
   _thisTransform: {fileID: 1753165886}
   pool:

@@ -49,26 +49,53 @@ public class BoardManager : MonoBehaviour
     {
         bool isMatch = false;
 
-        if(_elem.posX > 1)
+        if (_elem.posX > 1 && _elem.posY > 1)
         {
             int i = 1;
             do
             {
-                if (allElements[_elem.posX - i, _elem.posY].type == _elem.type)
+                if (allElements[_elem.posX - i, _elem.posY].type == _elem.type ||
+                    allElements[_elem.posX, _elem.posY - i].type == _elem.type ||
+                    allElements[_elem.posX - i, _elem.posY - i].type == _elem.type)
                     isMatch = true;
+
+                //Включать если пул элементов > 4
+                //if(_elem.posY < heigth - 2)
+                //    if(allElements[_elem.posX - i, _elem.posY + i].type == _elem.type)
+                //        isMatch = true;
+
                 i++;
             } while (isMatch && i < 3);
         }
-
-        if (_elem.posY > 1 && !isMatch)
+        else
         {
-            int i = 1;
-            do
+
+            if (_elem.posX > 1)
             {
-                if (allElements[_elem.posX, _elem.posY - i].type == _elem.type)
-                    isMatch = true;
-                i++;
-            } while (isMatch && i < 3);
+                int i = 1;
+                do
+                {
+                    if (allElements[_elem.posX - i, _elem.posY].type == _elem.type)
+                        isMatch = true;
+
+                    if (_elem.posY < heigth - 2)
+                        if (allElements[_elem.posX - i, _elem.posY + i].type == _elem.type)
+                            isMatch = true;
+
+                    i++;
+                } while (isMatch && i < 3);
+            }
+
+            if (_elem.posY > 1 && !isMatch)
+            {
+                int i = 1;
+                do
+                {
+                    if (allElements[_elem.posX, _elem.posY - i].type == _elem.type)
+                        isMatch = true;
+                    i++;
+                } while (isMatch && i < 3);
+            }
         }
 
         return isMatch;
